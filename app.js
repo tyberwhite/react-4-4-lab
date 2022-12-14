@@ -30,6 +30,7 @@ class Hamster {
 }
 
 // Create Person Class
+// NOTE! -- modified methods to improve efficiency
 class Person {
   constructor(name) {
     this.name = name;
@@ -57,17 +58,21 @@ class Person {
     console.log(`Hi! My name is ${this.name}`);
   }
 
-  eat() {
-    this.weight++;
-    this.mood++;
+  eat(frequency) {
+    this.weight += frequency;
+    this.mood += frequency;
   }
 
-  ageUp() {
-    this.age++;
-    this.height++;
-    this.weight++;
-    this.mood--;
-    this.bankAccount += 10;
+  exercise(frequency) {
+    this.weight -= frequency;
+  }
+
+  ageUp(years) {
+    this.age += years;
+    this.height += years;
+    this.weight += years;
+    this.mood -= years;
+    this.bankAccount += 10 * years;
   }
 
   buyHamster(hamster) {
@@ -80,3 +85,36 @@ class Person {
     }
   }
 }
+
+// 1. Instantiate a new Person named Timmy
+let timmy = new Person("Timmy");
+
+// 2. Age Timmy five years
+timmy.ageUp(5);
+
+// 3. At this point Timmy's a little bummed. As a precocious child, he feels he's "seen it all" already. Have him eat five times.
+timmy.eat(5);
+
+// 4. Now Timmy's a little heavier than he wants to be. Kindergarten's coming up and he wants to look good. Have him exercise five times
+timmy.exercise(5);
+
+// 5. Age Timmy 9 years
+timmy.ageUp(9);
+
+// 6. Create a hamster named "Gus"
+let gus = new Hamster("Gus");
+
+// 7. Set Gus's owner to the string "Timmy"
+gus.owner = "Timmy";
+
+// 8. Have Timmy "buy" Gus
+timmy.buyHamster(gus);
+
+// 9. Age Timmy 15 years
+timmy.ageUp(15);
+
+// 10. Have Timmy eat twice
+timmy.eat(2);
+
+// 11. Have Timmy exercise twice
+timmy.exercise(2);
